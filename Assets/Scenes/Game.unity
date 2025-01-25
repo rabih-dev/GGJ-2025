@@ -1367,7 +1367,7 @@ Transform:
   m_GameObject: {fileID: 322050370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.802723, y: 33.51516, z: 11.287304}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3191,7 +3191,7 @@ Transform:
   m_GameObject: {fileID: 863644497}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 25.746288, y: 0.89387894, z: -32.75813}
+  m_LocalPosition: {x: -2.0564346, y: 34.40904, z: -21.470825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4088,7 +4088,7 @@ Transform:
   m_GameObject: {fileID: 1114082162}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 25.746288, y: 0.89387894, z: -32.75813}
+  m_LocalPosition: {x: -2.0564346, y: 34.40904, z: -21.470825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5474,7 +5474,7 @@ GameObject:
   - component: {fileID: 1347277383}
   - component: {fileID: 1347277382}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
