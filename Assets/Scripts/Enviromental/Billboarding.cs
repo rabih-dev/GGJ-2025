@@ -13,7 +13,7 @@ public class Billboarding : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         cameraDirection = Camera.main.transform.forward;
         transform.rotation = Quaternion.LookRotation(cameraDirection);
