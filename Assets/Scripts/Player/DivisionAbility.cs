@@ -15,8 +15,6 @@ public class DivisionAbility : MonoBehaviour
     [SerializeField] private float divisionCooldownTime;
     private bool isOnCooldown;
 
-    [SerializeField]private Camera cam;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +24,7 @@ public class DivisionAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseRay = cam.ScreenPointToRay(Input.mousePosition);
+        mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseRay, out mouseHit);
 
 
