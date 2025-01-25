@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [Header("Size")]
     [SerializeField] float sizeLerpDuration;
     private Vector3 playerSize;
+    private Vector3 sizeToGain;
 
     [Header("References")]
     [SerializeField] private Rigidbody rb;
@@ -49,10 +50,12 @@ public class Player : MonoBehaviour
 
     private void GainSize(Vector3 sizeIncrement)
     {
-        Vector3 desiredSize = playerSize + sizeIncrement;
-        desiredSize.z = playerSize.z;
+        StopAllCoroutines();
 
-        StartCoroutine(nameof(SizeLerp), desiredSize);
+        sizeToGain += sizeIncrement;
+        sizeToGain.z = playerSize.z;
+
+        StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
 
     IEnumerator SizeLerp(Vector3 desiredSize)
