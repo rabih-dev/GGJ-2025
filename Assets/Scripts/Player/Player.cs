@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
         sizeToGain += sizeIncrement;
         sizeToGain.z = playerSize.z;
 
+        Singleton.GetInstance.cameraManager.AdjustCamera(sizeIncrement.x);
+
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
 

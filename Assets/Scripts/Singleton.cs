@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour
 {
-   public Transform playerPos;
+    public Transform playerPos;
+
+    public CameraManager cameraManager;
 
     private static Singleton instance;
 
