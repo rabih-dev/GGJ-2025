@@ -12,12 +12,14 @@ public class Edible : MonoBehaviour
     [SerializeField] private GameObject canEatHUD;
     public float cantEatSize;
 
+    Player player;
 
     Vector3 collectedPosition;
     Vector3 positionToLerp;
 
     void Start()
     {
+        player = Singleton.GetInstance.playerScript;
         enteredCollectRange = false;
     }
 
@@ -26,7 +28,7 @@ public class Edible : MonoBehaviour
     {
 
         //retirar?
-
+        DisplayCanEat();
 
         if (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) < collectRange)
         {
@@ -39,10 +41,19 @@ public class Edible : MonoBehaviour
         {
             transform.position = Vector3.Lerp(collectedPosition, positionToLerp, lerpDuration * Time.deltaTime);
         }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void DisplayCanEat()
     {
-       
+        if (cantEatSize <= player.GetSize().x)
+        {
+            canEatHUD.SetActive(true);
+        }
+
+        else 
+        {
+            canEatHUD.SetActive(false);
+        }
     }
 }
