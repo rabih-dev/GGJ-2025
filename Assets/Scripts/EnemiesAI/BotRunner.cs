@@ -23,6 +23,7 @@ public class BotRunner : MonoBehaviour
     {
         // Inicia a coroutine para mudar a direção após um tempo aleatório
         StartCoroutine(ChangeDirectionRandomly());
+        transform.parent = GameObject.FindGameObjectWithTag("Bots").transform;
     }
 
     void Update()
