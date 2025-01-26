@@ -23,15 +23,21 @@ PrefabInstance:
       propertyPath: sizeIncrementValue.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 156217199824404525, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f7e345a7b834f38409a3adf1916525ac,
+        type: 3}
     - target: {fileID: 465602031955941487, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 24
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 465602031955941487, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 465602031955941487, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}
