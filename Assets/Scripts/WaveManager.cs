@@ -67,14 +67,34 @@ public class WaveManager : MonoBehaviour
                 int n = Random.Range(3,7);
                 Transform player = GameObject.FindGameObjectWithTag("Player").transform;
                 if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
-                else {Instantiate(Enemies[n], player); }
+                else 
+                {
+                    // Get the player's current position
+                    Transform playerPos = player.transform;
+
+                    // Reset the player's rotation to the identity quaternion
+                    playerPos.rotation = Quaternion.identity;
+
+                    // Instantiate the enemy at the player's position and rotation
+                    Instantiate(Enemies[n], playerPos.position, playerPos.rotation);
+                }
             }
             else 
             {
                 int n = Random.Range(0,4);
                 Transform player = GameObject.FindGameObjectWithTag("Player").transform;
                 if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
-                else {Instantiate(Enemies[n], player); }
+                else 
+                {
+                    // Get the player's current position
+                    Transform playerPos = player.transform;
+
+                    // Reset the player's rotation to the identity quaternion
+                    playerPos.rotation = Quaternion.identity;
+
+                    // Instantiate the enemy at the player's position and rotation
+                    Instantiate(Enemies[n], playerPos.position, playerPos.rotation);
+                }
             }
         }
     }
