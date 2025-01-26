@@ -282,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeIncrementValue: {x: 1, y: 1, z: 0}
   enteredCollectRange: 0
-  lerpDuration: 10
-  collectRange: 5
+  lerpDuration: 20
+  collectRange: 3
 --- !u!114 &276020026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,37 +364,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &378913402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 378913403}
-  m_Layer: 0
-  m_Name: Singleton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &378913403
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378913402}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1092206374}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &395005057
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {fileID: 479968042}
+  cameraManager: {fileID: 689095478}
 --- !u!1 &410128373
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +694,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &689095476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689095477}
+  - component: {fileID: 689095478}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &689095477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689095476}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1092206374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689095478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689095476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d1eb38f8fcf4642b82f3a3adfbb5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 1674573286}
+--- !u!114 &940652398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2338303945128510587, guid: ccc01d4ca38c68b449c812c18ec60986,
+    type: 3}
+  m_PrefabInstance: {fileID: 9132807928610123825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f88360c41c2784483cb3cbd36a8370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1029117700
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,8 +826,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1029117702}
-  - {fileID: 378913403}
   - {fileID: 395005058}
+  - {fileID: 689095477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1095677542
@@ -858,7 +885,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 10
+  m_CameraDistance: 15
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
@@ -946,8 +973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeIncrementValue: {x: 1, y: 1, z: 0}
   enteredCollectRange: 0
-  lerpDuration: 10
-  collectRange: 5
+  lerpDuration: 20
+  collectRange: 3
 --- !u!114 &1352009360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1290,7 @@ Transform:
   m_GameObject: {fileID: 1674573285}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 26.093039, y: 2.3370676, z: -32.16875}
+  m_LocalPosition: {x: 26.093039, y: 5.8726015, z: -35.704285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1358,7 +1385,7 @@ Transform:
   m_GameObject: {fileID: 1687789524}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 26.093039, y: 2.3370676, z: -32.16875}
+  m_LocalPosition: {x: 26.093039, y: 5.8726015, z: -35.704285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1497,8 +1524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeIncrementValue: {x: 1, y: 1, z: 0}
   enteredCollectRange: 0
-  lerpDuration: 10
-  collectRange: 5
+  lerpDuration: 20
+  collectRange: 3
 --- !u!114 &1707405183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,10 +1999,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1851197132874347073, guid: ccc01d4ca38c68b449c812c18ec60986,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 940652398}
+    - target: {fileID: 2787210385735514949, guid: ccc01d4ca38c68b449c812c18ec60986,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5312391776309040586, guid: ccc01d4ca38c68b449c812c18ec60986,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312391776309040586, guid: ccc01d4ca38c68b449c812c18ec60986,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -41,11 +41,14 @@ public class Player : MonoBehaviour
         //multiplying by 100 just because i dont like large numbers on inspector
         moveForce = moveInput * moveSpeed * 100 * Time.fixedDeltaTime;
 
-        print("input é: " + moveInput);
-        print("force é: " + moveForce);
 
         //using this for more snapy controls
         rb.velocity = new Vector3(moveForce.x, rb.velocity.y, moveForce.y);
+    }
+
+    public Vector3 GetSize()
+    {
+        return playerSize;
     }
 
     private void GainSize(Vector3 sizeIncrement)

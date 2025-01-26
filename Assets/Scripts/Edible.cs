@@ -21,7 +21,6 @@ public class Edible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position));
 
         if (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) < collectRange)
         {

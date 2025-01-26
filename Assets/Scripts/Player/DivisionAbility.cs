@@ -11,6 +11,8 @@ public class DivisionAbility : MonoBehaviour
     GameObject obj;
     Vector3 divisionDir;
 
+    [SerializeField] private Player player;
+
     [SerializeField] private GameObject divisionProjectile;
     [SerializeField] private float divisionCooldownTime;
     private bool isOnCooldown;
@@ -32,12 +34,6 @@ public class DivisionAbility : MonoBehaviour
         {
             Shoot();
         }
-
-        if (obj != null)
-        {
-            print("to sim");
-            obj.transform.Translate(divisionDir * 2 * Time.deltaTime);
-        }
     }
     private void Shoot()
     {
@@ -45,6 +41,9 @@ public class DivisionAbility : MonoBehaviour
         divisionDir = -(transform.position - mouseHit.point);
         divisionDir.y = 0;
         obj = Instantiate(divisionProjectile, transform.position, Quaternion.identity);
+        DivisionProjectile projectile = obj.GetComponent<DivisionProjectile>();
+        projectile.SetProjectileSize(player.GetSize() / 3);
+        projectile.SetProjectileDirection(divisionDir);
     }
 
     IEnumerator DivideCooldown()

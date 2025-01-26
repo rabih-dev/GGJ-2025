@@ -7,12 +7,6 @@ using UnityEngine.Rendering.Universal;
 public class CameraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera virtualCamera;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
 
     public void AdjustCamera(float distanceIncrement)
     {
