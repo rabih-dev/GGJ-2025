@@ -8,7 +8,10 @@ public class Edible : MonoBehaviour
     [SerializeField] private bool enteredCollectRange;
     [SerializeField] private float lerpDuration;
     [SerializeField] private float collectRange;
-   
+
+    [SerializeField] private GameObject canEatHUD;
+    public float cantEatSize;
+
 
     Vector3 collectedPosition;
     Vector3 positionToLerp;
@@ -21,6 +24,9 @@ public class Edible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //retirar?
+
 
         if (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) < collectRange)
         {

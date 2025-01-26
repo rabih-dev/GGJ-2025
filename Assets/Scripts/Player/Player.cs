@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -100,9 +101,13 @@ public class Player : MonoBehaviour
         if (collider.gameObject.CompareTag("Edible"))
         {
             Edible edible = collider.gameObject.GetComponent<Edible>();
-            GainSize(edible.sizeIncrementValue);
-            collider.gameObject.SetActive(false);
 
+            if (edible.cantEatSize <= playerSize.x)
+            {
+                GainSize(edible.sizeIncrementValue);
+                collider.gameObject.SetActive(false);
+
+            }
         }
     }
 }
