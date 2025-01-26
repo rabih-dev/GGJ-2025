@@ -123,12 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d5bdc8ab7397b48ba363f87aa265bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeIncrementValue: {x: 0.1, y: 0.1, z: 0}
+  sizeIncrementValue: {x: 0.05, y: 0.05, z: 0.05}
   enteredCollectRange: 0
   lerpDuration: 1
   collectRange: 0.25
   canEatHUD: {fileID: 1682405692083156264}
-  cantEatSize: 0.5
+  canEatSize: 0
 --- !u!135 &3080998037546943710
 SphereCollider:
   m_ObjectHideFlags: 0

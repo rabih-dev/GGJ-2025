@@ -10,7 +10,8 @@ public class Edible : MonoBehaviour
     [SerializeField] private float collectRange;
 
     [SerializeField] private GameObject canEatHUD;
-    public float cantEatSize;
+    public float canEatSize;
+    private bool canBeEaten;
 
     Player player;
 
@@ -27,26 +28,30 @@ public class Edible : MonoBehaviour
     void Update()
     {
 
-        //retirar?
+        
         DisplayCanEat();
 
-        if (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) < collectRange)
+        if (canEatSize <= player.GetSize().x)
         {
-            enteredCollectRange = true;
-            collectedPosition = transform.position;
-            positionToLerp = Singleton.GetInstance.playerPos.position;
-        }
 
-        if (enteredCollectRange)
-        {
-            transform.position = Vector3.Lerp(collectedPosition, positionToLerp, lerpDuration * Time.deltaTime);
+            if (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) < collectRange)
+            {
+                enteredCollectRange = true;
+                collectedPosition = transform.position;
+                positionToLerp = Singleton.GetInstance.playerPos.position;
+            }
+
+            if (enteredCollectRange)
+            {
+                transform.position = Vector3.Lerp(collectedPosition, positionToLerp, lerpDuration * Time.deltaTime);
+            }
         }
 
     }
 
     private void DisplayCanEat()
     {
-        if (cantEatSize <= player.GetSize().x)
+        if (canEatSize <= player.GetSize().x)
         {
             canEatHUD.SetActive(true);
         }

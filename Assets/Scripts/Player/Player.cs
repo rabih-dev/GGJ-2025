@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         {
             Edible edible = collider.gameObject.GetComponent<Edible>();
 
-            if (edible.cantEatSize <= playerSize.x)
+            if (edible.canEatSize <= playerSize.x)
             {
                 GainSize(edible.sizeIncrementValue);
                 collider.gameObject.SetActive(false);
