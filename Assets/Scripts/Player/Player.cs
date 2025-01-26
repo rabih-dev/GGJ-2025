@@ -51,16 +51,25 @@ public class Player : MonoBehaviour
         return playerSize;
     }
 
-    private void GainSize(Vector3 sizeIncrement)
+    public void GainSize(Vector3 sizeIncrement)
     {
         StopAllCoroutines();
 
-        sizeToGain += sizeIncrement;
+        sizeToGain = sizeIncrement + playerSize;
         sizeToGain.z = playerSize.z;
+
+
 
         Singleton.GetInstance.cameraManager.AdjustCamera(sizeIncrement.x);
 
         StartCoroutine(nameof(SizeLerp), sizeToGain);
+    }
+
+    public void LoseSize(Vector3 sizeDecrement)
+    {
+       Vector3 sizeToLose = playerSize - sizeDecrement;
+
+        StartCoroutine(nameof(SizeLerp), sizeToLose);
     }
 
     IEnumerator SizeLerp(Vector3 desiredSize)

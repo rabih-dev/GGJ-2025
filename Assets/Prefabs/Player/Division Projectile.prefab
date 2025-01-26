@@ -169,8 +169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDuration: 5
   projectileDir: {x: 0, y: 0, z: 0}
-  projectileSpeed: 10
+  projectileSpeed: 20
   sizeLerpDuration: 1
+  moveToPlayerSpeed: 5
   rb: {fileID: 8310873579040692145}
   offsetMax: 1.5
   offsetMin: 1

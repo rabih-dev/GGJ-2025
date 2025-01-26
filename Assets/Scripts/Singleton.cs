@@ -8,6 +8,8 @@ public class Singleton : MonoBehaviour
 {
     public Transform playerPos;
 
+    public Player playerScript;
+
     public CameraManager cameraManager;
 
     private static Singleton instance;

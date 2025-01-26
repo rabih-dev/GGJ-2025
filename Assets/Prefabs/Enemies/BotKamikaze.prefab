@@ -215,9 +215,11 @@ GameObject:
   - component: {fileID: 8701961762625231309}
   - component: {fileID: 272215945553700590}
   - component: {fileID: 3813418079391325608}
+  - component: {fileID: -5454623813153461921}
+  - component: {fileID: -5744608619393632881}
   m_Layer: 0
   m_Name: BotKamikaze
-  m_TagString: Untagged
+  m_TagString: Edible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,3 +306,40 @@ MonoBehaviour:
   moveSpeed: 3.5
   explosion: {fileID: 5298381242418062818}
   destroyDelay: 1
+--- !u!114 &-5454623813153461921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302282270592618627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d5bdc8ab7397b48ba363f87aa265bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeIncrementValue: {x: 0.1, y: 0.1, z: 0}
+  enteredCollectRange: 0
+  lerpDuration: 1
+  collectRange: 2.5
+--- !u!135 &-5744608619393632881
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302282270592618627}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.9952753
+  m_Center: {x: 0, y: 1.4952753, z: 0}

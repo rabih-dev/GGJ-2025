@@ -98,6 +98,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BotAviaoMetralha
       objectReference: {fileID: 0}
+    - target: {fileID: 4722982498052243710, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Edible
+      objectReference: {fileID: 0}
     - target: {fileID: 7486037712456255921, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}
       propertyPath: m_Radius
@@ -116,5 +121,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4722982498052243710, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6857448512298511801}
   m_SourcePrefab: {fileID: 100100000, guid: 6dfe5aa032106a64ca6e3ff4812365fb, type: 3}
+--- !u!1 &160201229415663385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4722982498052243710, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4878033526125774823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6857448512298511801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160201229415663385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d5bdc8ab7397b48ba363f87aa265bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeIncrementValue: {x: 0.1, y: 0.1, z: 0}
+  enteredCollectRange: 0
+  lerpDuration: 1
+  collectRange: 2.5

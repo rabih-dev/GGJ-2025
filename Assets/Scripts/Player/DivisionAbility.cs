@@ -37,6 +37,8 @@ public class DivisionAbility : MonoBehaviour
     }
     private void Shoot()
     {
+        player.LoseSize(player.GetSize() / 3);
+
         StartCoroutine(nameof(DivideCooldown));
         divisionDir = -(transform.position - mouseHit.point);
         divisionDir.y = 0;

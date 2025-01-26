@@ -16,6 +16,8 @@ public class DivisionProjectile : MonoBehaviour
     private Vector3 projectileSize;
     private Vector3 sizeToGain;
 
+    [SerializeField] float moveToPlayerSpeed;
+
     private GameObject gumPile;
 
     [SerializeField] Rigidbody rb;
@@ -34,18 +36,13 @@ public class DivisionProjectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        print(Singleton.GetInstance.playerPos.position);
+        
 
         if (!followPlayer)
         {
-            rb.AddForce(projectileDir * projectileSpeed * Time.deltaTime, ForceMode.Force);
-        }
-
-        else 
-        {
-            transform.position = Singleton.GetInstance.playerPos.position + offset; 
+            rb.AddForce(projectileDir * projectileSpeed * Time.fixedDeltaTime, ForceMode.Force);
         }
 
 
@@ -87,7 +84,7 @@ public class DivisionProjectile : MonoBehaviour
     {
         StopAllCoroutines();
 
-        sizeToGain += sizeIncrement;
+        sizeToGain = sizeIncrement + projectileSize;
         sizeToGain.z = projectileSize.z;
 
         Singleton.GetInstance.cameraManager.AdjustCamera(sizeIncrement.x);
@@ -105,8 +102,23 @@ public class DivisionProjectile : MonoBehaviour
 
         projectileSize = desiredSize;
 
-        GenerateOffset();   
-        followPlayer = true;
+        GenerateOffset();
+        StartCoroutine(nameof(MoveToPlayer));
+    }
+
+
+
+    IEnumerator MoveToPlayer()
+    {
+        while (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) > 2)
+        {
+            Vector3 playerDir = -(transform.position - Singleton.GetInstance.playerPos.position).normalized;
+            transform.Translate(playerDir * moveToPlayerSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        Singleton.GetInstance.playerScript.GainSize(projectileSize);
+        gameObject.SetActive(false);
 
     }
 
@@ -117,9 +129,14 @@ public class DivisionProjectile : MonoBehaviour
         if (collider.gameObject.CompareTag("Edible"))
         {
             hitAnEdible = true;
+
+            followPlayer = true;
             rb.velocity = Vector3.zero;
+
+
             Edible edible = collider.gameObject.GetComponent<Edible>();
             GainSize(edible.sizeIncrementValue);
+            
             collider.gameObject.SetActive(false);
 
         }
