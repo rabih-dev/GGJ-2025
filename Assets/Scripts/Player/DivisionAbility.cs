@@ -54,9 +54,6 @@ public class DivisionAbility : MonoBehaviour
         DivisionProjectile projectile = obj.GetComponent<DivisionProjectile>();
         projectile.SetProjectileSize(player.GetSize() / 2);
         projectile.SetProjectileDirection(divisionDir);
-
-      
-       
     }
 
     IEnumerator DivideCooldown()
