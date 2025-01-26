@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Edible
   - Enemies
+  - Bots
   layers:
   - Default
   - TransparentFX
