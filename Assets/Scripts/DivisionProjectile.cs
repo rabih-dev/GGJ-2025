@@ -28,7 +28,7 @@ public class DivisionProjectile : MonoBehaviour
     private Vector3 offset;
     private bool followPlayer;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         //projectile size is set on instantiate
 

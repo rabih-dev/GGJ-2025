@@ -8,12 +8,12 @@ public class DivisionAbility : MonoBehaviour
     private Ray mouseRay;
     private RaycastHit mouseHit;
 
-    GameObject obj;
     Vector3 divisionDir;
+
+    [SerializeField] private ObjectPooler pooler;
 
     [SerializeField] private Player player;
 
-    [SerializeField] private GameObject divisionProjectile;
     [SerializeField] private float divisionCooldownTime;
     private bool isOnCooldown;
 
@@ -42,10 +42,20 @@ public class DivisionAbility : MonoBehaviour
         StartCoroutine(nameof(DivideCooldown));
         divisionDir = -(transform.position - mouseHit.point);
         divisionDir.y = 0;
-        obj = Instantiate(divisionProjectile, transform.position, Quaternion.identity);
+
+        GameObject obj = pooler.GetPooledObject();
+
+        obj.SetActive(true);
+        obj.transform.position = transform.position;
+        obj.transform.rotation = Quaternion.identity;
+
+
         DivisionProjectile projectile = obj.GetComponent<DivisionProjectile>();
         projectile.SetProjectileSize(player.GetSize() / 3);
         projectile.SetProjectileDirection(divisionDir);
+
+      
+       
     }
 
     IEnumerator DivideCooldown()
