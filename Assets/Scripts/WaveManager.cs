@@ -9,15 +9,33 @@ public class WaveManager : MonoBehaviour
     
     [Header("References")]
     [SerializeField] Transform[] summonPositions;
-
+    [SerializeField] bool HardMode;
     
     [Header("Cooldowns")]
     [SerializeField] float cd;
+    [SerializeField] float timeForHardmode;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(PrepareToSummon());
+        StartCoroutine(MakeGameHarder());
+        StartCoroutine(ActiveHardmode());
+    }
+
+    IEnumerator MakeGameHarder()
+    {
+        yield return new WaitForSeconds(90);
+
+        cd = cd - (0.2f*cd);        
+    }
+
+    
+    IEnumerator ActiveHardmode()
+    {
+        yield return new WaitForSeconds(timeForHardmode);
+
+        HardMode = true;        
     }
 
     private IEnumerator PrepareToSummon()
@@ -34,9 +52,30 @@ public class WaveManager : MonoBehaviour
 
     void Summon()
     {
-        int n = Random.Range(0,4);
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-        if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
-        else {Instantiate(Enemies[n], player); }
+        if(!HardMode)
+        {
+            int n = Random.Range(0,4);
+            Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+            if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
+            else {Instantiate(Enemies[n], player); }
+        }
+        else 
+        {
+            int x = Random.Range(0,11);
+            if (x > 3)
+            {
+                int n = Random.Range(3,7);
+                Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+                if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
+                else {Instantiate(Enemies[n], player); }
+            }
+            else 
+            {
+                int n = Random.Range(0,4);
+                Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+                if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
+                else {Instantiate(Enemies[n], player); }
+            }
+        }
     }
 }
