@@ -6,6 +6,7 @@ public class AerealBomb : MonoBehaviour
 {
     void Start()
     {
+        transform.parent = GameObject.FindGameObjectWithTag("Enemies").transform;
         Destroy(this.gameObject, 10f);
     }
 }

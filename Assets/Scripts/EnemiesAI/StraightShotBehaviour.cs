@@ -12,6 +12,7 @@ public class StraightShotBehaviour : MonoBehaviour
 
     void Start()
     {
+        transform.parent = GameObject.FindGameObjectWithTag("Enemies").transform;
         // Obtém a referência do Rigidbody do objeto
         rb = GetComponent<Rigidbody>();
 
