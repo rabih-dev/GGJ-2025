@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] float sizeLerpDuration;
     private Vector3 playerSize;
     private Vector3 sizeToGain;
+    private Vector3 sizeToLose;
 
-    [Header("References")]
+   [Header("References")]
     [SerializeField] private Rigidbody rb;
 
     void Start()
@@ -62,11 +63,11 @@ public class Player : MonoBehaviour
     }
     public void GainSize(Vector3 sizeIncrement)
     {
-        StopAllCoroutines();
 
         sizeToGain = sizeIncrement + playerSize;
         sizeToGain.z = playerSize.z;
 
+        moveSpeed += sizeIncrement.x / 2;
 
 
         Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x);
@@ -76,7 +77,10 @@ public class Player : MonoBehaviour
 
     public void LoseSize(Vector3 sizeDecrement)
     {
-        Vector3 sizeToLose = playerSize - sizeDecrement;
+        sizeToLose = playerSize - sizeDecrement;
+        sizeToLose.z = playerSize.z;
+
+        moveSpeed -= sizeToLose.x / 2;
 
         Singleton.GetInstance.cameraManager.ZoomInCamera(sizeDecrement.x);
 
