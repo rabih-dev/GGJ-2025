@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8913287723914494858}
   m_Layer: 0
   m_Name: Damage Collisor
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: -5744608619393632881}
   m_Layer: 0
   m_Name: BotKamikaze
-  m_TagString: Edible
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5298381242418062818, guid: 8133e0618a5d8e14ca15ac51b841b544,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 7258449927995337975, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -141,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 7302282270592618627, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_TagString
-      value: Edible
+      value: Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 8701961762625231309, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
