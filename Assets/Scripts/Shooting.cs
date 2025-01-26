@@ -36,6 +36,6 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bullet);
+        Instantiate(bullet, this.transform);
     }
 }
