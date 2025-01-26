@@ -8,6 +8,15 @@ public class LifeDino : MonoBehaviour
 {
     [SerializeField] int MaxLife = 3;
     [SerializeField] GameObject[] hudLife;
+    [SerializeField] float tamanhoFinal;
+
+    void FixedUpdate()
+    {
+        if(MaxLife > 0 && transform.parent.GetComponent<Player>().GetSize().x >= tamanhoFinal)
+        {
+            //Ganhou
+        }
+    }
 
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Bullet")
