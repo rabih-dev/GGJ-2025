@@ -10,18 +10,18 @@ public class SizeBar : MonoBehaviour
 
     void Start()
     {
-        currentLevel = 0;
-        levelSlider.maxValue = maxLevel;
-        levelSlider.value = currentLevel;
+        //currentLevel = 0;
+        //levelSlider.maxValue = maxLevel;
+        //levelSlider.value = currentLevel;
     }
 
     void FixedUpdate()
     {
         //currentLevel = (player.size/proxMeta.size)*100
-        if (currentLevel > maxLevel)
-        {
-            currentLevel = maxLevel;
-        }
-        levelSlider.value = currentLevel;
+        //if (currentLevel > maxLevel)
+        //{
+        //    currentLevel = maxLevel;
+        //}
+        //levelSlider.value = currentLevel;
     }
 }
