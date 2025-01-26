@@ -9,7 +9,10 @@ public class LeaveLabScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        mapLab.SetActive(false);    
-        mapCity.SetActive(true);    
+        if(other.CompareTag("Player"))
+        { 
+            mapLab.SetActive(false);    
+            mapCity.SetActive(true);
+        }
     }
 }

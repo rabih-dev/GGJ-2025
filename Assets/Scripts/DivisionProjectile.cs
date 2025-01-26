@@ -86,9 +86,6 @@ public class DivisionProjectile : MonoBehaviour
 
         sizeToGain = sizeIncrement + projectileSize;
         sizeToGain.z = projectileSize.z;
-
-        Singleton.GetInstance.cameraManager.AdjustCamera(sizeIncrement.x);
-
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
 

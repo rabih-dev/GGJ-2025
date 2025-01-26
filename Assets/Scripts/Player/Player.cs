@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        PleaseStopFlying();
         Movement();
     }
 
@@ -51,6 +52,13 @@ public class Player : MonoBehaviour
         return playerSize;
     }
 
+    private void PleaseStopFlying()
+    {
+        if (rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        }
+    }
     public void GainSize(Vector3 sizeIncrement)
     {
         StopAllCoroutines();
@@ -60,14 +68,17 @@ public class Player : MonoBehaviour
 
 
 
-        Singleton.GetInstance.cameraManager.AdjustCamera(sizeIncrement.x);
+        Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x);
 
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
 
     public void LoseSize(Vector3 sizeDecrement)
     {
-       Vector3 sizeToLose = playerSize - sizeDecrement;
+        Vector3 sizeToLose = playerSize - sizeDecrement;
+
+        Singleton.GetInstance.cameraManager.ZoomInCamera(sizeDecrement.x);
+
 
         StartCoroutine(nameof(SizeLerp), sizeToLose);
     }

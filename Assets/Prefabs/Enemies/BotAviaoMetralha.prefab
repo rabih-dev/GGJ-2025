@@ -8,6 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2914105111256326803, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      propertyPath: sizeIncrementValue.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2914105111256326803, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      propertyPath: sizeIncrementValue.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 465602031955941487, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -102,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Edible
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205233026754379954, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 7486037712456255921, guid: 6dfe5aa032106a64ca6e3ff4812365fb,
         type: 3}

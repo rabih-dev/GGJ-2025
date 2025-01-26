@@ -8,6 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5454623813153461921, guid: 8133e0618a5d8e14ca15ac51b841b544,
+        type: 3}
+      propertyPath: sizeIncrementValue.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5454623813153461921, guid: 8133e0618a5d8e14ca15ac51b841b544,
+        type: 3}
+      propertyPath: sizeIncrementValue.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 272215945553700590, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_Radius
@@ -122,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Edible
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701961762625231309, guid: 8133e0618a5d8e14ca15ac51b841b544,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
