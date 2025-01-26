@@ -13,6 +13,7 @@ public class DivisionAbility : MonoBehaviour
     [SerializeField] private ObjectPooler pooler;
 
     [SerializeField] private Player player;
+    [SerializeField] private Transform spawnPoint;
 
     [SerializeField] private float divisionCooldownTime;
     private bool isOnCooldown;
@@ -51,7 +52,7 @@ public class DivisionAbility : MonoBehaviour
 
 
         DivisionProjectile projectile = obj.GetComponent<DivisionProjectile>();
-        projectile.SetProjectileSize(player.GetSize() / 3);
+        projectile.SetProjectileSize(player.GetSize() / 2);
         projectile.SetProjectileDirection(divisionDir);
 
       

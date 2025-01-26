@@ -22,14 +22,24 @@ public class CursorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (mouseHit.collider.CompareTag("EnemyEntity") || mouseHit.collider.CompareTag("Button"))
-        {
-            Cursor.SetCursor(hasTargetCursorTexture, cursorHotSpot, CursorMode.Auto);
-        }
 
-        else 
+        mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
+        if (Physics.Raycast(mouseRay, out mouseHit))
         {
+            if (mouseHit.collider.CompareTag("Edible") || mouseHit.collider.CompareTag("Button"))
+            {
+                Cursor.SetCursor(hasTargetCursorTexture, cursorHotSpot, CursorMode.Auto);
+            }
+
+            else
+            {
+                Cursor.SetCursor(cursorTexture, cursorHotSpot, CursorMode.Auto);
+            }
+        }
+        else 
+        { 
             Cursor.SetCursor(cursorTexture, cursorHotSpot, CursorMode.Auto);
         }
     }

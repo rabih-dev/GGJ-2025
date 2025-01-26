@@ -110,7 +110,7 @@ public class DivisionProjectile : MonoBehaviour
         while (Vector3.Distance(transform.position, Singleton.GetInstance.playerPos.position) > 2)
         {
             Vector3 playerDir = -(transform.position - Singleton.GetInstance.playerPos.position).normalized;
-            transform.Translate(playerDir * moveToPlayerSpeed * Time.deltaTime);
+            rb.AddForce(playerDir * moveToPlayerSpeed * Time.fixedDeltaTime);
             yield return null;
         }
 

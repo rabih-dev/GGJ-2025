@@ -21,7 +21,8 @@ public class ObjectPooler : MonoBehaviour
 
     void Create()
     {
-        GameObject obj = (GameObject)Instantiate(pooledObject, parent: transform);
+        //o parent era transform, deixei null devido a problemas no tamanho dos objetos
+        GameObject obj = (GameObject)Instantiate(pooledObject, parent: null);
         obj.SetActive(false);
         pooledObjects.Add(obj);
     }
