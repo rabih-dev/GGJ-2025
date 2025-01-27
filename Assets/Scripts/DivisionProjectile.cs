@@ -18,7 +18,7 @@ public class DivisionProjectile : MonoBehaviour
 
     [SerializeField] float moveToPlayerSpeed;
 
-    private GameObject gumPile;
+    [SerializeField] private GameObject gumPile;
 
     [SerializeField] Rigidbody rb;
 
@@ -27,25 +27,41 @@ public class DivisionProjectile : MonoBehaviour
     [SerializeField] private float offsetMin;
     private Vector3 offset;
     private bool followPlayer;
+    GameObject closestEdible = null;
+    float closestDistance = Mathf.Infinity;
+    
     // Start is called before the first frame update
     void OnEnable()
     {
         //projectile size is set on instantiate
-
         Invoke(nameof(Pop), projectileDuration);
+        StartCoroutine(nameof(GotLost));
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        
-
-        if (!followPlayer)
+    {    
+        GameObject[] edibles = GameObject.FindGameObjectsWithTag("Edible");
+        if (edibles.Length > 0 && closestEdible == null)
         {
-            rb.AddForce(projectileDir * projectileSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            foreach (GameObject edible in edibles)
+            {
+                float distance = Vector3.Distance(transform.position, edible.transform.position);
+                
+                if (distance < closestDistance && edible.GetComponent<Edible>().canEatSize <= GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetSize().x)
+                {
+                    closestDistance = distance;
+                    closestEdible = edible;
+                }
+            }
         }
-
-
+        
+        if (closestEdible != null)
+        {
+            Vector3 directionToEdible = (closestEdible.transform.position - transform.position).normalized;
+            directionToEdible.y = 0;
+            rb.AddForce(directionToEdible * projectileSpeed * Time.fixedDeltaTime, ForceMode.Force);
+        }
     }
 
     private void GenerateOffset()
@@ -74,10 +90,17 @@ public class DivisionProjectile : MonoBehaviour
     {
         if (!hitAnEdible)
         {
-            //  GameObject obj = Instantiate(gumPile);
-            //  obj.GetComponent<Edible>().sizeIncrementValue = projectileSize;
+            GameObject obj = Instantiate(gumPile);
+            obj.GetComponent<Edible>().sizeIncrementValue = projectileSize;
             gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator GotLost()
+    {
+        yield return new WaitForSeconds(10);
+        GainSize(projectileSize);
+        gameObject.SetActive(false);
     }
 
     private void GainSize(Vector3 sizeIncrement)
@@ -85,7 +108,7 @@ public class DivisionProjectile : MonoBehaviour
         StopAllCoroutines();
 
         sizeToGain = sizeIncrement + projectileSize;
-        sizeToGain.z = projectileSize.z;
+        
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
 
@@ -100,7 +123,9 @@ public class DivisionProjectile : MonoBehaviour
         projectileSize = desiredSize;
 
         GenerateOffset();
-        StartCoroutine(nameof(MoveToPlayer));
+        Singleton.GetInstance.playerScript.GainSize(projectileSize);
+        gameObject.SetActive(false);
+        //StartCoroutine(nameof(MoveToPlayer));
     }
 
 
@@ -114,9 +139,6 @@ public class DivisionProjectile : MonoBehaviour
             yield return null;
         }
 
-        Singleton.GetInstance.playerScript.GainSize(projectileSize);
-        gameObject.SetActive(false);
-
     }
 
 
@@ -127,21 +149,17 @@ public class DivisionProjectile : MonoBehaviour
         {
             hitAnEdible = true;
 
-            followPlayer = true;
             rb.velocity = Vector3.zero;
-
 
             Edible edible = collider.gameObject.GetComponent<Edible>();
             GainSize(edible.sizeIncrementValue);
             
             collider.gameObject.SetActive(false);
-
         }
 
-      //  if (collider.gameObject.CompareTag("O NOME QUE FOR QUANDO O RAFA BOTAR LA NAS TAG"))
-       // { 
-       //     collider.gameObject.SetActive(false);
-        //}
+        if (collider.gameObject.CompareTag("Bullet"))
+        { 
+            collider.gameObject.SetActive(false);
+        }
     }
-
 }

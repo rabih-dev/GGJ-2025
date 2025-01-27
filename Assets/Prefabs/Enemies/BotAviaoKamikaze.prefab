@@ -10,11 +10,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5454623813153461921, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
-      propertyPath: canEatHUD
-      value: 
-      objectReference: {fileID: 7983321184084565725}
-    - target: {fileID: -5454623813153461921, guid: 8133e0618a5d8e14ca15ac51b841b544,
-        type: 3}
       propertyPath: sizeIncrementValue.x
       value: 1
       objectReference: {fileID: 0}
@@ -97,17 +92,17 @@ PrefabInstance:
     - target: {fileID: 7258449927995337975, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7258449927995337975, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7258449927995337975, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7258449927995337975, guid: 8133e0618a5d8e14ca15ac51b841b544,
         type: 3}
@@ -174,14 +169,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: -5454623813153461921, guid: 8133e0618a5d8e14ca15ac51b841b544, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 4370631808430216291, guid: 8133e0618a5d8e14ca15ac51b841b544, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8133e0618a5d8e14ca15ac51b841b544, type: 3}
---- !u!1 &7983321184084565725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4370631808430216291, guid: 8133e0618a5d8e14ca15ac51b841b544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5939665343041997502}
-  m_PrefabAsset: {fileID: 0}

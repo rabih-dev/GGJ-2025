@@ -27,8 +27,6 @@ public class Edible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
         DisplayCanEat();
 
         if (canEatSize <= player.GetSize().x)

@@ -8246,7 +8246,7 @@ MonoBehaviour:
   collectRange: 0
   canEatHUD: {fileID: 224967679291644900, guid: 0e5344b941d68a34e9e1ea6dc2a81204,
     type: 3}
-  cantEatSize: 100
+  canEatSize: 0
 --- !u!1001 &370522558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19458,7 +19458,7 @@ MonoBehaviour:
   collectRange: 0
   canEatHUD: {fileID: 224967679291644900, guid: 0e5344b941d68a34e9e1ea6dc2a81204,
     type: 3}
-  cantEatSize: 200
+  canEatSize: 0
 --- !u!1001 &858669506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43422,6 +43422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Edible
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921212324807387058, guid: b89672309c76b864b8778b8d194acedf,
+        type: 3}
+      propertyPath: tamanhoFinal
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1921212324807387058, guid: b89672309c76b864b8778b8d194acedf,
         type: 3}

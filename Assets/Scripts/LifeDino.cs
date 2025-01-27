@@ -12,7 +12,7 @@ public class LifeDino : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(MaxLife > 0 && transform.parent.GetComponent<Player>().GetSize().x >= tamanhoFinal)
+        if(MaxLife > 0 && transform.GetComponent<Player>().GetSize().x >= tamanhoFinal)
         {
             //Ganhou
         }
@@ -21,12 +21,20 @@ public class LifeDino : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.tag == "Bullet")
         {
-            MaxLife--;
-
-            if(MaxLife>0){hudLife[MaxLife].SetActive(false);}
-            else 
+            if (canTakeDamage)
             {
-                SceneManager.LoadScene("Menu");
+                MaxLife--;
+
+                if (MaxLife > 0)
+                {
+                    hudLife[MaxLife].SetActive(false);
+                }
+                else
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+
+                StartCoroutine(DamageCooldown());
             }
         }
     }
@@ -35,13 +43,38 @@ public class LifeDino : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            MaxLife--;
-
-            if(MaxLife>0){hudLife[MaxLife].SetActive(false);}
-            else 
+            if (canTakeDamage)
             {
-                SceneManager.LoadScene("Menu");
+                MaxLife--;
+
+                if (MaxLife > 0)
+                {
+                    hudLife[MaxLife].SetActive(false);
+                }
+                else
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+
+                StartCoroutine(DamageCooldown());
             }
         }
+    }
+
+    public void AddLife()
+    {
+        if(MaxLife < 3)
+        {
+            MaxLife++;
+            hudLife[MaxLife-1].SetActive(true);
+        }
+    }
+
+    private bool canTakeDamage = true;
+    private IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(1);
+        canTakeDamage = true;
     }
 }

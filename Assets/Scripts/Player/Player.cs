@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
         //multiplying by 100 just because i dont like large numbers on inspector
         moveForce = moveInput * moveSpeed * 100 * Time.fixedDeltaTime;
 
-
         //using this for more snapy controls
         rb.velocity = new Vector3(moveForce.x, rb.velocity.y, moveForce.y);
     }
@@ -65,12 +64,10 @@ public class Player : MonoBehaviour
     {
 
         sizeToGain = sizeIncrement + playerSize;
-        sizeToGain.z = playerSize.z;
 
-        moveSpeed += sizeIncrement.x / 2;
+        moveSpeed += sizeIncrement.x/1.5f;
 
-
-        Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x);
+        Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x*4);
 
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
@@ -78,12 +75,8 @@ public class Player : MonoBehaviour
     public void LoseSize(Vector3 sizeDecrement)
     {
         sizeToLose = playerSize - sizeDecrement;
-        sizeToLose.z = playerSize.z;
 
-        moveSpeed -= sizeToLose.x / 2;
-
-        Singleton.GetInstance.cameraManager.ZoomInCamera(sizeDecrement.x);
-
+        moveSpeed -= sizeToLose.x;
 
         StartCoroutine(nameof(SizeLerp), sizeToLose);
     }
@@ -104,14 +97,22 @@ public class Player : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Edible"))
         {
-            Edible edible = collider.gameObject.GetComponent<Edible>();
-
-            if (edible.canEatSize <= playerSize.x)
-            {
-                GainSize(edible.sizeIncrementValue);
-                collider.gameObject.SetActive(false);
-
-            }
+            StartCoroutine(nameof(EatEdible), collider);
         }
     }
+
+    IEnumerator EatEdible(Collider collider)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        Edible edible = collider.gameObject.GetComponent<Edible>();
+
+        if (edible.canEatSize <= playerSize.x)
+        {
+            GainSize(edible.sizeIncrementValue);
+            collider.gameObject.SetActive(false);
+            GetComponent<LifeDino>().AddLife();
+        }
+    }
+
 }

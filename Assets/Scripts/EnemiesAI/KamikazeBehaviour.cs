@@ -51,7 +51,7 @@ public class KamikazeBehaviour : MonoBehaviour
         rb.velocity = direction * moveSpeed;  // Aplicando velocidade no Rigidbody
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         // Verifica se o objeto colidido é o Player
         if (other.gameObject.CompareTag("Player"))
