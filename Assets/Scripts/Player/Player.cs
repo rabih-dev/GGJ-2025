@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
         sizeToGain = sizeIncrement + playerSize;
 
-        moveSpeed += sizeIncrement.x/3f;
+        moveSpeed += sizeIncrement.x/2.65f;
 
         Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x*3.5f);
 

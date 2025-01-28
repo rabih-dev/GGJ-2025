@@ -9,6 +9,12 @@ public class ChangeScene : MonoBehaviour
 
     public void Change()
     {
+        StartCoroutine(ChangeSceneCoroutine());
+    }
+
+    IEnumerator ChangeSceneCoroutine()
+    {
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(sceneName);
     }
 }
