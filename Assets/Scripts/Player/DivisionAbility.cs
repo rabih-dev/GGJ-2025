@@ -30,7 +30,6 @@ public class DivisionAbility : MonoBehaviour
         mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseRay, out mouseHit);
 
-
         if (Input.GetMouseButtonDown(0) && !isOnCooldown)
         {
             Shoot();
@@ -38,8 +37,6 @@ public class DivisionAbility : MonoBehaviour
     }
     private void Shoot()
     {
-        player.LoseSize(player.GetSize() / 3);
-
         StartCoroutine(nameof(DivideCooldown));
         divisionDir = -(transform.position - mouseHit.point);
         divisionDir.y = 0;
@@ -49,7 +46,6 @@ public class DivisionAbility : MonoBehaviour
         obj.SetActive(true);
         obj.transform.position = transform.position;
         obj.transform.rotation = Quaternion.identity;
-
 
         DivisionProjectile projectile = obj.GetComponent<DivisionProjectile>();
         projectile.SetProjectileSize(player.GetSize() / 2);

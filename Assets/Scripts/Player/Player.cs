@@ -31,10 +31,18 @@ public class Player : MonoBehaviour
     {
     }
 
+    bool hm = false;
+
     private void FixedUpdate()
     {
         PleaseStopFlying();
         Movement();
+
+        if (!hm && GetSize().x > 4f)
+        {
+            hm = true;
+            GameObject.FindGameObjectWithTag("Finish").GetComponent<WaveManager>().ActiveHardmode();
+        }
     }
 
     private void Movement()
@@ -62,12 +70,13 @@ public class Player : MonoBehaviour
     }
     public void GainSize(Vector3 sizeIncrement)
     {
+        sizeIncrement = new Vector3(sizeIncrement.x/3, sizeIncrement.x/3, sizeIncrement.x/3);
 
         sizeToGain = sizeIncrement + playerSize;
 
-        moveSpeed += sizeIncrement.x/1.5f;
+        moveSpeed += sizeIncrement.x/3f;
 
-        Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x*4);
+        Singleton.GetInstance.cameraManager.ZoomOutCamera(sizeIncrement.x*3.5f);
 
         StartCoroutine(nameof(SizeLerp), sizeToGain);
     }
@@ -111,7 +120,10 @@ public class Player : MonoBehaviour
         {
             GainSize(edible.sizeIncrementValue);
             collider.gameObject.SetActive(false);
-            GetComponent<LifeDino>().AddLife();
+            if (collider.gameObject.GetComponent<KamikazeBehaviour>() == null)
+            {
+                GetComponent<LifeDino>().AddLife();
+            }
         }
     }
 

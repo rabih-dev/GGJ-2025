@@ -7,6 +7,7 @@ public class DinoSpeak : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource dino;
     [SerializeField] private AudioClip[] dinoSounds;
+    [SerializeField] private AudioClip DeathSound;
 
     void Start()
     {
@@ -20,5 +21,11 @@ public class DinoSpeak : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(5, 15));
             dino.PlayOneShot(dinoSounds[Random.Range(0, dinoSounds.Length)]);
         }
+    }
+
+    public void StopSpeaking()
+    {
+        StopAllCoroutines();
+        dino.PlayOneShot(DeathSound);
     }
 }

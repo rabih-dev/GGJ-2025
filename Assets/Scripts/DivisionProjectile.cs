@@ -22,13 +22,10 @@ public class DivisionProjectile : MonoBehaviour
 
     [SerializeField] Rigidbody rb;
 
-
     [SerializeField] private float offsetMax;
     [SerializeField] private float offsetMin;
     private Vector3 offset;
     private bool followPlayer;
-    GameObject closestEdible = null;
-    float closestDistance = Mathf.Infinity;
     
     // Start is called before the first frame update
     void OnEnable()
@@ -41,27 +38,8 @@ public class DivisionProjectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {    
-        GameObject[] edibles = GameObject.FindGameObjectsWithTag("Edible");
-        if (edibles.Length > 0 && closestEdible == null)
-        {
-            foreach (GameObject edible in edibles)
-            {
-                float distance = Vector3.Distance(transform.position, edible.transform.position);
-                
-                if (distance < closestDistance && edible.GetComponent<Edible>().canEatSize <= GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().GetSize().x)
-                {
-                    closestDistance = distance;
-                    closestEdible = edible;
-                }
-            }
-        }
-        
-        if (closestEdible != null)
-        {
-            Vector3 directionToEdible = (closestEdible.transform.position - transform.position).normalized;
-            directionToEdible.y = 0;
-            rb.AddForce(directionToEdible * projectileSpeed * Time.fixedDeltaTime, ForceMode.Force);
-        }
+        projectileDir.y = 0;
+        rb.AddForce(projectileDir * projectileSpeed * Time.fixedDeltaTime, ForceMode.Force);
     }
 
     private void GenerateOffset()
@@ -91,7 +69,7 @@ public class DivisionProjectile : MonoBehaviour
         if (!hitAnEdible)
         {
             GameObject obj = Instantiate(gumPile);
-            obj.GetComponent<Edible>().sizeIncrementValue = projectileSize;
+            obj.GetComponent<Edible>().sizeIncrementValue = new Vector3(0.1f, 0.1f, 0.1f);
             gameObject.SetActive(false);
         }
     }

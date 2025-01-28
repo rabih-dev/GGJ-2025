@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: ec36db47cc13f0e4fb8ab92fa59f15ce
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 582d92679955b8d4da8a07fbb2a642cf
-  - enabled: 0
-    path: Assets/Scenes/Game.unity
-    guid: 6bc6489901f89b241b528079e047549a
-  - enabled: 0
-    path: Assets/Scenes/Rafa.unity
-    guid: cee3a1da6e32e1e42b36cf6c86e1fb6b
   - enabled: 1
     path: Assets/Scenes/Game do Rabih.unity
     guid: dd6b20cc4c1d23344a7819aad69da3c6
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 6dfc3a8172121f345a849760e39d8388
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 6c1bca3118362784c87eeecdd8b98abc
   m_configObjects: {}

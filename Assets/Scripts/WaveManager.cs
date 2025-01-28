@@ -20,7 +20,6 @@ public class WaveManager : MonoBehaviour
     {
         StartCoroutine(PrepareToSummon());
         StartCoroutine(MakeGameHarder());
-        StartCoroutine(ActiveHardmode());
     }
 
     IEnumerator MakeGameHarder()
@@ -31,10 +30,8 @@ public class WaveManager : MonoBehaviour
     }
 
     
-    IEnumerator ActiveHardmode()
+    public void ActiveHardmode()
     {
-        yield return new WaitForSeconds(timeForHardmode);
-
         HardMode = true;        
     }
 
@@ -61,28 +58,13 @@ public class WaveManager : MonoBehaviour
         }
         else 
         {
-            int x = Random.Range(0,11);
-            if (x > 3)
-            {
-                int n = Random.Range(3,7);
-                Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-                if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
-                else 
-                {
-                    // Instantiate the enemy at the player's position without modifying its rotation
-                    Instantiate(Enemies[n], player.position, Enemies[n].transform.rotation);
-                }
-            }
+            int n = Random.Range(3,7);
+            Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+            if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
             else 
             {
-                int n = Random.Range(0,4);
-                Transform player = GameObject.FindGameObjectWithTag("Player").transform;
-                if(n != 3) {Instantiate(Enemies[n], summonPositions[Random.Range(0,8)]); }
-                else 
-                {
-                    // Instantiate the enemy at the player's position without modifying its rotation
-                    Instantiate(Enemies[n], player.position, Enemies[n].transform.rotation);
-                }
+                // Instantiate the enemy at the player's position without modifying its rotation
+                Instantiate(Enemies[n], player.position, Enemies[n].transform.rotation);
             }
         }
     }

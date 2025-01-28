@@ -13,7 +13,7 @@ public class LifeDino : MonoBehaviour
     {
         if(MaxLife > 0 && transform.GetComponent<Player>().GetSize().x >= tamanhoFinal)
         {
-            //Ganhou
+            SceneManager.LoadScene("Win");
         }
     }
 
@@ -29,8 +29,8 @@ public class LifeDino : MonoBehaviour
                     hudLife[MaxLife].SetActive(false);
                 }
                 else
-                {
-                    SceneManager.LoadScene("Menu");
+                {                    
+                    StartCoroutine(DeathCooldown());
                 }
 
                 StartCoroutine(DamageCooldown());
@@ -52,7 +52,7 @@ public class LifeDino : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Menu");
+                    StartCoroutine(DeathCooldown());
                 }
 
                 StartCoroutine(DamageCooldown());
@@ -67,6 +67,13 @@ public class LifeDino : MonoBehaviour
             MaxLife++;
             hudLife[MaxLife-1].SetActive(true);
         }
+    }
+
+    private IEnumerator DeathCooldown()
+    {
+        GetComponent<DinoSpeak>().StopSpeaking();
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("GameOver");
     }
 
     private bool canTakeDamage = true;
